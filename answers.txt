@@ -1,0 +1,61 @@
+# PROBLEM 1: PARSE TREE AND DERIVATION
+
+## Parse Tree
+
+A = B * ( C  * ( A + B ) )
+<Identifier> = <Identifier> * ( <Identifier> * ( <Identifier> + <Identifier> ) )
+<Identifier> = <Factor> * ( <Factor> * ( <Factor> + <Factor> ) )
+<Identifier> = <Factor> * ( <Factor> * ( <Term> + <Term> ) )
+<Identifier> = <Factor> * ( <Factor> * ( <Expression> + <Term> ) )
+<Identifier> = <Factor> * ( <Factor> * ( <Expression> ) )
+<Identifier> = <Factor> * ( <Factor> * <Factor> )
+<Identifier> = <Factor> * ( <Term> * <Factor> )
+<Identifier> = <Factor> * ( <Term> )
+<Identifier> = <Factor> * ( <Expression> )
+<Identifier> = <Factor> * <Factor>
+<Identifier> = <Term> * <Factor>
+<Identifier> = <Term>
+<Identifier> = <Expression>
+<Assignment>
+<Statement>
+
+## Leftmost Derivation
+
+<Statement>
+<Assignment>
+<Identifier> = <Expression>
+A = <Expression>
+A = <Term>
+A = <Term> * <Factor>
+A = <Factor> * <Factor>
+A = <Identifier> * <Factor>
+A = B * <Factor>
+A = B * ( <Expression> )
+A = B * ( <Term> )
+A = B * ( <Term> * <Factor> )
+A = B * ( <Factor> * <Factor> )
+A = B * ( <Identifier> * <Factor> )
+A = B * ( C * <Factor> )
+A = B * ( C * ( <Expression> ) )
+A = B * ( C * ( <Expression> + <Term> ) )
+A = B * ( C * ( <Term> + <Term> ) )
+A = B * ( C * ( <Factor> + <Term> ) )
+A = B * ( C * ( <Identifier> + <Term> ) )
+A = B * ( C * ( A + <Term> ) )
+A = B * ( C * ( A + <Factor> ) )
+A = B * ( C * ( A + <Identifier> ) )
+A = B * ( C * ( A + B ) )
+
+# PROBLEM 2: SCOPE
+
+## Static Scope
+
+The program prints 180
+
+## Dynamic Scope - Deep Binding
+
+The program prints 126
+
+## Dynamic Scope - Shallow Binding
+
+The program prints 101
